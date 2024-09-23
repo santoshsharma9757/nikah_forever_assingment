@@ -15,5 +15,5 @@ Pinput is used for capturing and validating PIN entries, enhancing user experien
 Intl is used to format dates in the desired format, improving readability and localization support.
 
 ## Android Apk
-- [Click here to download Apk]([https://docs.flutter.dev/get-started/codelab](https://i.diawi.com/EvEKWA))
+- [Click here to download Apk](https://i.diawi.com/EvEKWA)
 
