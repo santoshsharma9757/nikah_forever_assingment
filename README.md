@@ -1,4 +1,7 @@
 # Nikah forever assignment
+### Flutter SDK & Dart Versions
+- **Flutter SDK**: ` 3.24.3 `
+- **Dart**: ` 3.5.3`
 ### Packages Used:
 **Provider** <br>
 Used for state management, enabling efficient handling of business logic and UI updates.
