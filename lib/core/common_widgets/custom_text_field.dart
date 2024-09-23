@@ -54,9 +54,9 @@ class CustomInputField extends StatelessWidget {
               labelText: label,
               hintText: hintText,
               labelStyle: TextStyle(
-                  fontSize: !isValid ? 11 : 12, color: AppColors.lightGrey),
+                  fontSize: !isValid ? 11 : 13, color: AppColors.lightGrey),
               hintStyle: TextStyle(
-                  fontSize: !isValid ? 11 : 12, color: AppColors.lightGrey),
+                  fontSize: !isValid ? 11 : 13, color: AppColors.lightGrey),
               prefixIcon: prefixIcon,
               suffixIcon: suffixIcon,
               border: OutlineInputBorder(

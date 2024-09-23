@@ -81,6 +81,7 @@ class _DatePickerSelectionState extends State<DatePickerSelection> {
         padding: const EdgeInsets.all(16.0),
         child: CustomButton(
           text: "Confirm",
+          textStyle: AppTextStyles.heading3,
           onPressed: () {
             Navigator.pop(context);
           },

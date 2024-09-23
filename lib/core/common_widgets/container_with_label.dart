@@ -53,7 +53,7 @@ class ContainerWithLabel extends StatelessWidget {
                     isFilled ? selectedValue : hintText,
                     style: TextStyle(
                       color: isFilled ? AppColors.black : AppColors.lightGrey,
-                      fontSize: isFilled?13:11
+                      fontSize: isFilled?13:12
                     ),
                   ),
                   Image.asset(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nikah_forever_assignment/core/common_widgets/common_button.dart';
-import 'package:nikah_forever_assignment/core/common_widgets/container_widget.dart';
+import 'package:nikah_forever_assignment/core/common_widgets/container_with_label.dart';
 import 'package:nikah_forever_assignment/core/common_widgets/custom_text_field.dart';
 import 'package:nikah_forever_assignment/core/constants/app_string.dart';
 import 'package:nikah_forever_assignment/core/constants/app_style.dart';

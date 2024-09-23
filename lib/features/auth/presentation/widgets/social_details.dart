@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nikah_forever_assignment/core/common_widgets/container_widget.dart';
+import 'package:nikah_forever_assignment/core/common_widgets/container_with_label.dart';
 import 'package:nikah_forever_assignment/core/extensions/app_extensions.dart';
 import 'package:nikah_forever_assignment/core/utils/app_utils.dart';
 import 'package:nikah_forever_assignment/features/auth/view_model/auth_viewmodel.dart';

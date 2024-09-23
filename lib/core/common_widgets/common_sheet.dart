@@ -190,8 +190,6 @@ class _CommonBottomSheetState extends State<CommonBottomSheet> {
         pageController: _pageController,
         selectedValue: viewModel.selectedAnnualIncomeRange,
       ),
-
-      // Additional selections can be added here if needed
     ];
   }
 }
