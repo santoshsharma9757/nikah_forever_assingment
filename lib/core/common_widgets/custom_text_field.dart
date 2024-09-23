@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:nikah_forever_assignment/core/constants/app_style.dart';
 import 'package:nikah_forever_assignment/core/constants/app_text_style.dart';
+import 'package:nikah_forever_assignment/features/auth/view_model/auth_viewmodel.dart';
+import 'package:provider/provider.dart';
 
-class CustomInputField extends StatelessWidget {
+class CustomInputField extends StatefulWidget {
   final TextEditingController controller;
   final String label;
   final String? hintText;
@@ -33,6 +35,11 @@ class CustomInputField extends StatelessWidget {
   });
 
   @override
+  State<CustomInputField> createState() => _CustomInputFieldState();
+}
+
+class _CustomInputFieldState extends State<CustomInputField> {
+  @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,37 +47,43 @@ class CustomInputField extends StatelessWidget {
         SizedBox(
           height: 48,
           child: TextFormField(
-            controller: controller,
-            obscureText: isPassword,
-            keyboardType: keyboardType,
-            validator: validator,
-            enabled: isEnabled,
+            controller: widget.controller,
+            obscureText: widget.isPassword,
+            keyboardType: widget.keyboardType,
+            validator: widget.validator,
+            enabled: widget.isEnabled,
             onChanged: (value) {
-              if (onChanged != null) {
-                onChanged!(value);
-              }
+              setState(() {});
+            },
+            onTapOutside: (event) {
+              context.read<AuthViewModel>().onSaved();
+            },
+            onFieldSubmitted: (value) {
+              context.read<AuthViewModel>().onSaved();
             },
             decoration: InputDecoration(
-              labelText: label,
-              hintText: hintText,
+              labelText: widget.label,
+              hintText: widget.hintText,
               labelStyle: TextStyle(
-                  fontSize: !isValid ? 11 : 13, color: AppColors.lightGrey),
+                  fontSize: !widget.isValid ? 11 : 13,
+                  color: AppColors.lightGrey),
               hintStyle: TextStyle(
-                  fontSize: !isValid ? 11 : 13, color: AppColors.lightGrey),
-              prefixIcon: prefixIcon,
-              suffixIcon: suffixIcon,
+                  fontSize: !widget.isValid ? 11 : 13,
+                  color: AppColors.lightGrey),
+              prefixIcon: widget.prefixIcon,
+              suffixIcon: widget.suffixIcon,
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8.0),
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8.0),
-                borderSide:
-                    BorderSide(color: isValid ? AppColors.darkGrey : Colors.red),
+                borderSide: BorderSide(
+                    color: widget.isValid ? AppColors.darkGrey : Colors.red),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8.0),
                 borderSide: BorderSide(
-                    color: isValid ? AppColors.darkGrey : Colors.red),
+                    color: widget.isValid ? AppColors.darkGrey : Colors.red),
               ),
               disabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8.0),
@@ -79,10 +92,10 @@ class CustomInputField extends StatelessWidget {
             ),
           ),
         ),
-        if (errorMessage != null && !isValid)
+        if (widget.errorMessage != null && !widget.isValid)
           Padding(
             padding: const EdgeInsets.only(top: 4.0),
-            child: Text(errorMessage!, style: AppTextStyles.errorText),
+            child: Text(widget.errorMessage!, style: AppTextStyles.errorText),
           ),
       ],
     );

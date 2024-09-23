@@ -86,9 +86,6 @@ class BasicDetailsStep extends StatelessWidget {
       label: "Enter your name",
       errorMessage: viewModel.isNameValid ? null : AppString.emptyErrorMessage,
       isValid: viewModel.isNameValid,
-      onChanged: (value) {
-        viewModel.validateBasicDetails();
-      },
     );
   }
 

@@ -132,6 +132,11 @@ class AuthViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  onSaved(){
+    _isNameValid=true;
+    notifyListeners();
+  }
+
 //Socia Data
   List<String> maritalStatusList = ['Single', 'Married', 'Divorced', 'Widowed'];
   String? selectedMaritalStatus;
