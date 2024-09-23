@@ -19,7 +19,7 @@ class MultiStepSelection extends StatefulWidget {
   });
 
   @override
-  _MultiStepSelectionState createState() => _MultiStepSelectionState();
+  State<MultiStepSelection> createState() => _MultiStepSelectionState();
 }
 
 class _MultiStepSelectionState extends State<MultiStepSelection> {
