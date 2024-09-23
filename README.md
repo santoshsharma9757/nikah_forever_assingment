@@ -19,9 +19,13 @@ Intl is used to format dates in the desired format, improving readability and lo
 ### Note:
 ##### The background and font colors might differ because I don't have the exact color palette.
 ## Android Apk
-- [Click here to download Apk](https://i.diawi.com/EvEKWA)
+- [Click here to download Apk](https://i.diawi.com/dduUwB)
 ## App Demo Video
 
 
-https://github.com/user-attachments/assets/abadef99-c20a-4176-8d54-4622d2852984
+
+
+
+https://github.com/user-attachments/assets/db6adbba-0423-4044-acc2-57d86fe41a96
+
 
