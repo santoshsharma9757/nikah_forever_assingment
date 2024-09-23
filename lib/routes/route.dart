@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nikah_forever_assignment/features/auth/presentation/views/registration_process_screen.dart';
-import 'package:nikah_forever_assignment/features/home/presentation/view/home_scree.dart';
+import 'package:nikah_forever_assignment/features/home/presentation/view/home_screen.dart';
 
 class AppRoutes {
   static Route<dynamic>? onGeneratedRoute(RouteSettings routeSettings) {

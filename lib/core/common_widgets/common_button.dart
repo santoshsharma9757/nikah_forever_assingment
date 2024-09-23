@@ -12,6 +12,7 @@ class CustomButton extends StatelessWidget {
   final TextStyle? textStyle;
   final BoxBorder? border;
   final List<BoxShadow>? boxShadow;
+  final double? fontSize;
 
   const CustomButton({
     super.key,
@@ -26,6 +27,7 @@ class CustomButton extends StatelessWidget {
     this.textStyle,
     this.border,
     this.boxShadow,
+    this.fontSize,
   });
 
   @override
@@ -46,10 +48,12 @@ class CustomButton extends StatelessWidget {
           child: FittedBox(
             child: Text(
               text,
-              style: textStyle ??
+              style: textStyle?.copyWith(
+                    fontSize: fontSize ?? 13.0,
+                  ) ??
                   TextStyle(
                     color: textColor ?? Colors.white,
-                    fontSize: 13.0,
+                    fontSize: fontSize ?? 13.0,
                   ),
             ),
           ),

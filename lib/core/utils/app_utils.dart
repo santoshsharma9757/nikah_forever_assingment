@@ -48,7 +48,7 @@ class AppUtils {
                   alignment: Alignment.center,
                   child: Text(
                     title,
-                    style: AppTextStyles.heading3,
+                    style: AppTextStyles.heading5,
                   )),
               content: Align(alignment: Alignment.center, child: Text(message)),
               actions: <Widget>[
@@ -65,6 +65,7 @@ class AppUtils {
                       textColor: AppColors.primary,
                       height: 30.0,
                       width: context.screenWidth * 0.25,
+                      fontSize: 15,
                     ),
                     CustomButton(
                       text: "Logout",
@@ -76,6 +77,7 @@ class AppUtils {
                       buttonColor: AppColors.primary,
                       height: 30.0,
                       width: context.screenWidth * 0.25,
+                      fontSize: 15,
                     ),
                   ],
                 ),
