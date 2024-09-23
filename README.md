@@ -17,7 +17,7 @@ State management is efficiently handled using Provider, ensuring seamless UI upd
 Pinput is used for capturing and validating PIN entries, enhancing user experience.
 Intl is used to format dates in the desired format, improving readability and localization support.
 ### Note:
-The background and font colors might differ because I don't have the exact color palette.
+###### The background and font colors might differ because I don't have the exact color palette.
 ## Android Apk
 - [Click here to download Apk](https://i.diawi.com/EvEKWA)
 ## App Demo Video
