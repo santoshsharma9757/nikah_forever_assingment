@@ -60,7 +60,7 @@ class BasicDetailsStep extends StatelessWidget {
               10.height(),
               _buildFamilyButtons(viewModel, context),
               20.height(),
-              if (viewModel.isLivedWithFamily)
+              if (viewModel.isLivedWithFamily !=null&&viewModel.isLivedWithFamily)
                 _buildContainerWithLabel(
                   context,
                   viewModel,
@@ -101,7 +101,7 @@ class BasicDetailsStep extends StatelessWidget {
   }) {
     return GestureDetector(
       onTap: () {
-        AppUtils.showCommonBottomSheetBasicDetail(context, bottomSheetKey); 
+        AppUtils.showCommonBottomSheetBasicDetail(context, bottomSheetKey);
       },
       child: ContainerWithLabel(
         hintText: hintText,
@@ -117,7 +117,8 @@ class BasicDetailsStep extends StatelessWidget {
       children: [
         _buildFamilyButton(
           text: "Yes",
-          isSelected: !viewModel.isLivedWithFamily,
+          isSelected:
+              viewModel.isLivedWithFamily == false, // Only selected if false
           onPressed: () {
             viewModel.setIsLivedWithFamily(false);
           },
@@ -126,7 +127,8 @@ class BasicDetailsStep extends StatelessWidget {
         30.width(),
         _buildFamilyButton(
           text: "No",
-          isSelected: viewModel.isLivedWithFamily,
+          isSelected:
+              viewModel.isLivedWithFamily == true, // Only selected if true
           onPressed: () {
             viewModel.setIsLivedWithFamily(true);
           },

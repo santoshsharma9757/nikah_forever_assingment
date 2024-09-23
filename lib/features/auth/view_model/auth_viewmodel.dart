@@ -122,11 +122,10 @@ class AuthViewModel extends ChangeNotifier {
   bool get isAddressValid => _isAddressValid;
   bool get isAddress2Valid => _isAddress2Valid;
 
-
-  bool _isLivedWithFamily = false;
+  bool? _isLivedWithFamily; 
   get isLivedWithFamily => _isLivedWithFamily;
 
-  setIsLivedWithFamily(value) {
+  void setIsLivedWithFamily(bool value) {
     _isLivedWithFamily = value;
     notifyListeners();
   }

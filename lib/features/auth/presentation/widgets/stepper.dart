@@ -119,6 +119,7 @@ class _StepperWithLinesState extends State<StepperWithLines> {
     return (viewModel.isDateOfBirthValid &&
         viewModel.isHeightValid &&
         viewModel.isAddressValid &&
+        viewModel.isLivedWithFamily != null&&
         // viewModel.isAddress2Valid &&
         viewModel.isNameValid &&
         (_currentStep == 1 ? viewModel.isMaritalStatusValid : true) &&
