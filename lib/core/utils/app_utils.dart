@@ -21,13 +21,8 @@ class AppUtils {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
-      builder: (context) => CommonBottomSheetBasicDetails(contentKey: key), 
+      builder: (context) => CommonBottomSheetBasicDetails(contentKey: key),
     );
-  }
-
-//Snackbar
-  static showSnackBar(String message, BuildContext context) {
-    return SnackBar(backgroundColor: Colors.red, content: Text(message));
   }
 
 //Dialog

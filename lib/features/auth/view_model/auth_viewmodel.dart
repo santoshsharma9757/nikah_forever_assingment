@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:nikah_forever_assignment/core/constants/dummy_data.dart';
 
 class AuthViewModel extends ChangeNotifier {
-
+  //Pageview Index
   int currentPageIndex = 0;
+
+  //Date of Birth
   String? _selectedDateOfBirth;
   get selectedDateOfBirth => _selectedDateOfBirth;
   setSelectedDateOfBirth(value) {
@@ -12,7 +15,7 @@ class AuthViewModel extends ChangeNotifier {
   }
 
   // Height
-  List<String> heightList = ["4ft 5in", "5ft 7in", "6ft 2in"];
+  List<String> heightList = DummyData.heightList;
   String? selectedHeight;
   void updateSelectedHeight(String height) {
     selectedHeight = height;
@@ -21,23 +24,8 @@ class AuthViewModel extends ChangeNotifier {
   }
 
   // Address structure using a nested map
-  final Map<String, Map<String, List<String>>> addressData = {
-    'USA': {
-      'California': ["Los Angeles", "San Francisco", "San Diego"],
-      'Texas': ["Houston", "Dallas", "Austin"],
-      'New York': ["New York City", "Buffalo", "Rochester"],
-    },
-    'India': {
-      'Maharashtra': ["Mumbai", "Pune", "Nagpur"],
-      'Gujarat': ["Ahmedabad", "Surat", "Vadodara"],
-      'Punjab': ["Ludhiana", "Amritsar", "Jalandhar"],
-    },
-    'Canada': {
-      'Ontario': ["Toronto", "Ottawa", "Mississauga"],
-      'Quebec': ["Montreal", "Quebec City", "Laval"],
-      'British Columbia': ["Vancouver", "Victoria", "Surrey"],
-    },
-  };
+  final Map<String, Map<String, List<String>>> addressData =
+      DummyData.addressData;
   String? selectedCountry;
   String? selectedState;
   String? selectedCity;
@@ -100,6 +88,7 @@ class AuthViewModel extends ChangeNotifier {
   }
 
   List<String> get countryList => addressData.keys.toList();
+
   //Basic detail validation
   bool _isNameValid = true;
   bool _isDateOfBirthValid = true;
@@ -124,7 +113,7 @@ class AuthViewModel extends ChangeNotifier {
   bool get isAddressValid => _isAddressValid;
   bool get isAddress2Valid => _isAddress2Valid;
 
-  bool? _isLivedWithFamily; 
+  bool? _isLivedWithFamily;
   get isLivedWithFamily => _isLivedWithFamily;
 
   void setIsLivedWithFamily(bool value) {
@@ -132,25 +121,22 @@ class AuthViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  onSaved(){
-    _isNameValid=true;
+  onSaved() {
+    _isNameValid = true;
     notifyListeners();
   }
 
-//Socia Data
-  List<String> maritalStatusList = ['Single', 'Married', 'Divorced', 'Widowed'];
+//Socia Details Section
+  List<String> maritalStatusList = DummyData.maritalStatusList;
   String? selectedMaritalStatus;
-
-  // Other properties and methods...
-
   void updateSelectedMaritalStatus(String status) {
     selectedMaritalStatus = status;
     validateSocialDetails();
-    notifyListeners(); // Notify listeners to update the UI
+    notifyListeners();
   }
 
 //Mother toung
-  List<String> motherTongueList = ['Hindi', 'English', 'Spanish', 'Mandarin'];
+  List<String> motherTongueList = DummyData.motherTongueList;
   String? selectedMotherTongue;
   void updateSelectedMotherTongue(String tongue) {
     selectedMotherTongue = tongue;
@@ -159,14 +145,8 @@ class AuthViewModel extends ChangeNotifier {
   }
 
   //Anual Income
-  List<String> annualIncomeRangeList = [
-    'Rs. 2-3 Lakh',
-    'Rs. 3-5 Lakh',
-    'Rs. 5-10 Lakh',
-    'Above Rs. 10 Lakh',
-  ];
+  List<String> annualIncomeRangeList = DummyData.annualIncomeRangeList;
   String? selectedAnnualIncomeRange;
-
   void updateSelectedAnnualIncomeRange(String range) {
     selectedAnnualIncomeRange = range;
     validateSocialDetails();
@@ -174,13 +154,7 @@ class AuthViewModel extends ChangeNotifier {
   }
 
   //Full cast
-  // Simplified map for sects and castes
-  final Map<String, List<String>> sectData = {
-    'Sunni': ['Hanafi', 'Maliki', 'Shafi', 'Hanbali'],
-    'Shia': ['Twelver', 'Ismaili', 'Zaidi'],
-    'Arab': ['Arab Sunni', 'Arab Shia'],
-  };
-
+  final Map<String, List<String>> sectData = DummyData.sectData;
   String? selectedSect;
   String? selectedCaste;
 
@@ -188,7 +162,7 @@ class AuthViewModel extends ChangeNotifier {
 
   void updateSelectedSect(String sect) {
     selectedSect = sect;
-    selectedCaste = null; // Reset caste when sect changes
+    selectedCaste = null;
     fullCast = sect;
 
     notifyListeners();
@@ -204,42 +178,22 @@ class AuthViewModel extends ChangeNotifier {
   List<String> getCasteListForSect(String sect) {
     return sectData[sect] ?? [];
   }
-  //Education
 
   // Education structure using a nested map
-  final Map<String, List<String>> educationData = {
-    'Undergraduate': [
-      'B.Tech in Computer Science',
-      'B.Sc',
-      'B.Com',
-    ],
-    'Postgraduate': [
-      'M.Tech in Computer Science',
-      'M.Sc',
-      'M.Com',
-      'MBA',
-    ],
-    'Doctorate': [
-      'Ph.D. in Computer Science',
-      'Ph.D. in Mathematics',
-    ],
-  };
-
+  final Map<String, List<String>> educationData = DummyData.educationData;
   String? selectedEducationLevel;
   String? selectedEducation;
   String? fullEducation;
-
   void updateSelectedEducationLevel(String level) {
     selectedEducationLevel = level;
-    selectedEducation = null; // Reset the selected education when level changes
-    fullEducation = null; 
-    
+    selectedEducation = null;
+    fullEducation = null;
     notifyListeners();
   }
 
   void updateSelectedEducation(String education) {
     selectedEducation = education;
-    fullEducation = "$selectedEducationLevel: $education";
+    fullEducation = "$selectedEducationLevel,$education";
     validateSocialDetails();
     notifyListeners();
   }
@@ -248,26 +202,18 @@ class AuthViewModel extends ChangeNotifier {
     return educationData[level] ?? [];
   }
 
-  //Employement
   // Employment data structure
-  final Map<String, List<String>> employmentData = {
-    'Employed': ['Full-time', 'Part-time', 'Contract'],
-    'Unemployed': [],
-    'Self-employed': ['Freelancer', 'Business Owner'],
-    'Student': ['Intern', 'Full-time Student'],
-  };
-
+  final Map<String, List<String>> employmentData = DummyData.employmentData;
   String? selectedEmploymentType;
   String? selectedEmploymentDetail;
-
   // Full employment representation
   String? fullEmployment;
 
   // Method to update selected employment type
   void updateSelectedEmploymentType(String type) {
     selectedEmploymentType = type;
-    fullEmployment = type; // Set fullEmployment to the selected type
-    selectedEmploymentDetail = null; // Reset detail when type changes
+    fullEmployment = type;
+    selectedEmploymentDetail = null;
     notifyListeners();
   }
 
@@ -286,12 +232,7 @@ class AuthViewModel extends ChangeNotifier {
 
   //Occupation
   // Occupation data structure
-  final Map<String, List<String>> occupationData = {
-    'Professional': ['Doctor', 'Engineer', 'Teacher'],
-    'Business': ['Entrepreneur', 'Shop Owner', 'Consultant'],
-    'Government': ['Civil Servant', 'Police', 'Military'],
-    'Student': ['Undergraduate', 'Graduate', 'Postgraduate'],
-  };
+  final Map<String, List<String>> occupationData = DummyData.occupationData;
 
   String? selectedOccupationType;
   String? selectedOccupationDetail;
@@ -302,8 +243,8 @@ class AuthViewModel extends ChangeNotifier {
   // Method to update selected occupation type
   void updateSelectedOccupationType(String type) {
     selectedOccupationType = type;
-    fullOccupation = type; // Set fullOccupation to the selected type
-    selectedOccupationDetail = null; // Reset detail when type changes
+    fullOccupation = type;
+    selectedOccupationDetail = null;
     notifyListeners();
   }
 
