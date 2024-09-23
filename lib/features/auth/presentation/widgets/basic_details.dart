@@ -60,7 +60,8 @@ class BasicDetailsStep extends StatelessWidget {
               10.height(),
               _buildFamilyButtons(viewModel, context),
               20.height(),
-              if (viewModel.isLivedWithFamily !=null&&viewModel.isLivedWithFamily)
+              if (viewModel.isLivedWithFamily != null &&
+                  viewModel.isLivedWithFamily)
                 _buildContainerWithLabel(
                   context,
                   viewModel,
@@ -117,8 +118,7 @@ class BasicDetailsStep extends StatelessWidget {
       children: [
         _buildFamilyButton(
           text: "Yes",
-          isSelected:
-              viewModel.isLivedWithFamily == false, // Only selected if false
+          isSelected: viewModel.isLivedWithFamily == false,
           onPressed: () {
             viewModel.setIsLivedWithFamily(false);
           },
