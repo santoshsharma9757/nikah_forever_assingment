@@ -1,8 +1,8 @@
 # Nikah forever assignment
 ### Packages Used:
-Provider: Used for state management, enabling efficient handling of business logic and UI updates.
-Pinput: Utilized for implementing a customizable and user-friendly PIN input field.
-Intl: Employed for date formatting and internationalization.
+**Provider**: Used for state management, enabling efficient handling of business logic and UI updates.
+**Pinput**: Utilized for implementing a customizable and user-friendly PIN input field.
+**Intl**: Employed for date formatting and internationalization.
 ### UI and Functionality:
 The UI is structured using PageView for smooth horizontal navigation between different screens.
 State management is efficiently handled using Provider, ensuring seamless UI updates.
