@@ -1,16 +1,14 @@
 # nikah_forever_assignment
+### Packages Used:
+Provider: Used for state management, enabling efficient handling of business logic and UI updates.
+Pinput: Utilized for implementing a customizable and user-friendly PIN input field.
+Intl: Employed for date formatting and internationalization.
+### UI and Functionality:
+The UI is structured using PageView for smooth horizontal navigation between different screens.
+State management is efficiently handled using Provider, ensuring seamless UI updates.
+Pinput is used for capturing and validating PIN entries, enhancing user experience.
+Intl is used to format dates in the desired format, improving readability and localization support.
 
-A new Flutter project.
+## Android Apk
+- [Click here to download Apk]([https://docs.flutter.dev/get-started/codelab](https://i.diawi.com/EvEKWA))
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
