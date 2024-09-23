@@ -162,7 +162,6 @@ class _CommonBottomSheetState extends State<CommonBottomSheet> {
         items: viewModel.annualIncomeRangeList,
         onSelect: (value) {
           viewModel.updateSelectedAnnualIncomeRange(value);
-          Navigator.pop(context);
         },
         pageController: _pageController,
         selectedValue: viewModel.selectedAnnualIncomeRange,

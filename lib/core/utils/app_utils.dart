@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:nikah_forever_assignment/core/common_widgets/common_button.dart';
 import 'package:nikah_forever_assignment/core/common_widgets/common_sheet.dart';
@@ -65,7 +67,7 @@ class AppUtils {
                     CustomButton(
                       text: "Logout",
                       onPressed: () {
-                        Navigator.of(context).pop();
+                        exit(0);
                       },
                       borderRadius: 20.0,
                       textColor: AppColors.white,
