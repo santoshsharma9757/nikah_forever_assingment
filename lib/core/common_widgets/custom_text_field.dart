@@ -65,7 +65,7 @@ class CustomInputField extends StatelessWidget {
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8.0),
                 borderSide:
-                    BorderSide(color: isValid ? Colors.grey : Colors.red),
+                    BorderSide(color: isValid ? AppColors.darkGrey : Colors.red),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8.0),
@@ -74,7 +74,7 @@ class CustomInputField extends StatelessWidget {
               ),
               disabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8.0),
-                borderSide: const BorderSide(color: Colors.grey),
+                borderSide: const BorderSide(color: AppColors.darkGrey),
               ),
             ),
           ),

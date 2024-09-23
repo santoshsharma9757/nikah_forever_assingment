@@ -26,6 +26,7 @@ class HeightSelection extends StatelessWidget {
                   isSelected: isSelected,
                   onTap: () {
                     viewModel.updateSelectedHeight(height);
+                     Navigator.pop(context);
                   },
                 );
               },

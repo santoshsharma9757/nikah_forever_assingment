@@ -29,11 +29,9 @@ class _StepperWithLinesState extends State<StepperWithLines> {
         child: SingleChildScrollView(
           child: ConstrainedBox(
             constraints: BoxConstraints(
-              minHeight:
-                  availableHeight, // Minimum height of the content to prevent overflow
+              minHeight: availableHeight,
             ),
             child: IntrinsicHeight(
-              // Adjusts the height of its child to avoid overflow
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
@@ -86,9 +84,7 @@ class _StepperWithLinesState extends State<StepperWithLines> {
               text: _currentStep == widget.steps.length - 1 ? "Finish" : "Next",
               textStyle: AppTextStyles.heading3,
               onPressed: () {
-                // Validate basic details only if not on the last step
                 if (_currentStep < widget.steps.length - 1) {
-                  // Perform validation for the current step
                   if (_validateAndProceed(viewModel)) {
                     setState(() {
                       _currentStep++;

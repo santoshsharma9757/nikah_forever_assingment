@@ -8,7 +8,7 @@ class MaritalStatusSelection extends StatelessWidget {
   const MaritalStatusSelection({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { 
     return Consumer<AuthViewModel>(
       builder: (context, viewModel, child) {
         return Column(

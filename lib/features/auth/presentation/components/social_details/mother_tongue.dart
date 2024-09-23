@@ -10,7 +10,7 @@ class MotherTongueSelection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<AuthViewModel>(
-      builder: (context, viewModel, child) {
+      builder: (context, viewModel, child) { 
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

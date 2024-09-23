@@ -226,7 +226,8 @@ class AuthViewModel extends ChangeNotifier {
   void updateSelectedEducationLevel(String level) {
     selectedEducationLevel = level;
     selectedEducation = null; // Reset the selected education when level changes
-    fullEducation = null; // Reset fullEducation
+    fullEducation = null; 
+    
     notifyListeners();
   }
 

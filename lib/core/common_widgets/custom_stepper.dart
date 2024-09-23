@@ -6,14 +6,14 @@ class CustomStepper extends StatelessWidget {
   final int currentStep;
   final Function(int) onStepChanged;
   final int stepCount;
-  final List<String> stepLabels; // Changed from String to List<String>
+  final List<String> stepLabels;
 
   const CustomStepper({
     super.key,
     required this.currentStep,
     required this.onStepChanged,
     required this.stepCount,
-    required this.stepLabels, // Updated to accept a list of labels
+    required this.stepLabels,
   });
 
   final Color _stepColor = AppColors.primary;

@@ -25,7 +25,7 @@ class SocialDetailStep extends StatelessWidget {
               bottomSheetKey: 'marital_status',
             ),
             20.height(),
-            _buildContainerWithLabel(
+            _buildContainerWithLabel( 
               context,
               viewModel,
               hintText: "Mother Tongue*",

@@ -8,7 +8,7 @@ class AddressSelection2 extends StatefulWidget {
   const AddressSelection2({super.key});
 
   @override
-  _AddressSelection2State createState() => _AddressSelection2State();
+  State<AddressSelection2> createState() => _AddressSelection2State();
 }
 
 class _AddressSelection2State extends State<AddressSelection2> {
@@ -63,6 +63,7 @@ class _AddressSelection2State extends State<AddressSelection2> {
                     viewModel.selectedCity2,
                     (value) {
                       viewModel.updateSelectedCity(value, isAddress2: true);
+                      Navigator.pop(context);
                     },
                     "City",
                   ),

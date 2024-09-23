@@ -9,7 +9,6 @@ class AppRoutes {
         return MaterialPageRoute(builder: (context) => RegistrationProcess());
       case "/home_screen":
         return MaterialPageRoute(builder: (context) => const HomeScreen());
-
       default:
         return null;
     }

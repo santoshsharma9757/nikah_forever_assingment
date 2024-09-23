@@ -66,7 +66,7 @@ class VerificationStep extends StatelessWidget {
     return const Padding(
       padding: EdgeInsets.only(top: 8.0),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(
             Icons.mobile_friendly,

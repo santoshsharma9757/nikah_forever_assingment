@@ -24,132 +24,149 @@ class BasicDetailsStep extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               12.height(),
-              CustomInputField(
-                key: UniqueKey(),
-                controller: viewModel.nameController,
-                label: "Enter your name",
-                errorMessage:
-                    viewModel.isNameValid ? null : AppString.emptyErrorMessage,
-                isValid: viewModel.isNameValid,
-                onChanged: (value) {
-                  viewModel.validateBasicDetails();
-                },
+              _buildCustomInputField(viewModel),
+              20.height(),
+              _buildContainerWithLabel(
+                context,
+                viewModel,
+                hintText: "Date of birth*",
+                selectedValue: viewModel.selectedDateOfBirth,
+                isValid: viewModel.isDateOfBirthValid,
+                bottomSheetKey: 'date_of_birth',
               ),
               20.height(),
-              GestureDetector(
-                onTap: () {
-                  AppUtils.showCommonBottomSheet(context, 'date_of_birth');
-                },
-                child: ContainerWithLabel(
-                  hintText: "Date of birth*",
-                  selectedValue: viewModel.selectedDateOfBirth ?? "",
-                  isValid: viewModel.isDateOfBirthValid,
-                ),
+              _buildContainerWithLabel(
+                context,
+                viewModel,
+                hintText: "Height*",
+                selectedValue: viewModel.selectedHeight,
+                isValid: viewModel.isHeightValid,
+                bottomSheetKey: 'height',
               ),
               20.height(),
-              GestureDetector(
-                onTap: () {
-                  AppUtils.showCommonBottomSheet(context, 'height');
-                },
-                child: ContainerWithLabel(
-                  hintText: "Height*",
-                  selectedValue: viewModel.selectedHeight ?? "",
-                  isValid: viewModel.isHeightValid,
-                ),
+              _buildContainerWithLabel(
+                context,
+                viewModel,
+                hintText: "Address*",
+                selectedValue: viewModel.fullAddress,
+                isValid: viewModel.isAddressValid,
+                bottomSheetKey: 'address',
               ),
               20.height(),
-              GestureDetector(
-                onTap: () {
-                  AppUtils.showCommonBottomSheet(context, 'address');
-                },
-                child: ContainerWithLabel(
-                  hintText: "Address*",
-                  selectedValue: viewModel.fullAddress ?? "",
-                  isValid: viewModel.isAddressValid,
-                ),
-              ),
-              10.height(),
               const Text(
                 "Do you live with your family?",
                 style: AppTextStyles.caption,
               ),
               10.height(),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  CustomButton(
-                    text: "Yes",
-                    onPressed: () {
-                      context.read<AuthViewModel>().setIsLivedWithFamily(false);
-                    },
-                    borderRadius: 15.0,
-                    buttonColor: !viewModel.isLivedWithFamily
-                        ? AppColors.primary
-                        : AppColors.white,
-                    border: Border.all(
-                      color: !viewModel.isLivedWithFamily
-                          ? AppColors.primary
-                          : AppColors.lightGrey,
-                    ),
-                    textColor: !viewModel.isLivedWithFamily
-                        ? AppColors.white
-                        : AppColors.darkGrey,
-                    width: context.screenWidth * 0.3,
-                    height: 35.0,
-                  ),
-                  30.width(),
-                  CustomButton(
-                    text: "No",
-                    onPressed: () {
-                      context.read<AuthViewModel>().setIsLivedWithFamily(true);
-                    },
-                    borderRadius: 15.0,
-                    buttonColor: viewModel.isLivedWithFamily
-                        ? AppColors.primary
-                        : AppColors.white,
-                    border: Border.all(
-                      color: viewModel.isLivedWithFamily
-                          ? AppColors.primary
-                          : AppColors.lightGrey,
-                    ),
-                    textColor: viewModel.isLivedWithFamily
-                        ? AppColors.white
-                        : AppColors.darkGrey,
-                    width: context.screenWidth * 0.3,
-                    height: 35.0,
-                  ),
-                ],
-              ),
+              _buildFamilyButtons(viewModel, context),
               20.height(),
-              !viewModel.isLivedWithFamily
-                  ? const SizedBox.shrink()
-                  : GestureDetector(
-                      onTap: () {
-                        AppUtils.showCommonBottomSheet(context, 'address2');
-                      },
-                      child: ContainerWithLabel(
-                        hintText: "Where does your family live*",
-                        selectedValue: viewModel.fullAddress2 ?? "",
-                        isValid: true,
-                      ),
-                    ),
+              if (viewModel.isLivedWithFamily)
+                _buildContainerWithLabel(
+                  context,
+                  viewModel,
+                  hintText: "Where does your family live*",
+                  selectedValue: viewModel.fullAddress2,
+                  isValid: true,
+                  bottomSheetKey: 'address2',
+                ),
               10.height(),
-              CustomButton(
-                text: "Logout",
-                onPressed: () {
-                  AppUtils.showMyDialog(
-                      "Logout", "Are you sure want to logout", context);
-                },
-                borderRadius: 5.0,
-                buttonColor: AppColors.extraLightGrey,
-                textColor: AppColors.darkGrey,
-                width: context.screenWidth * 0.15,
-                height: 30.0,
-              ),
+              _buildLogoutButton(context),
             ],
           ),
         );
       }),
+    );
+  }
+
+  Widget _buildCustomInputField(AuthViewModel viewModel) {
+    return CustomInputField(
+      key: UniqueKey(),
+      controller: viewModel.nameController,
+      label: "Enter your name",
+      errorMessage: viewModel.isNameValid ? null : AppString.emptyErrorMessage,
+      isValid: viewModel.isNameValid,
+      onChanged: (value) {
+        viewModel.validateBasicDetails();
+      },
+    );
+  }
+
+  Widget _buildContainerWithLabel(
+    BuildContext context,
+    AuthViewModel viewModel, {
+    required String hintText,
+    required String? selectedValue,
+    required bool isValid,
+    required String bottomSheetKey,
+  }) {
+    return GestureDetector(
+      onTap: () {
+        AppUtils.showCommonBottomSheetBasicDetail(context, bottomSheetKey); 
+      },
+      child: ContainerWithLabel(
+        hintText: hintText,
+        selectedValue: selectedValue ?? '',
+        isValid: isValid,
+      ),
+    );
+  }
+
+  Widget _buildFamilyButtons(AuthViewModel viewModel, BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        _buildFamilyButton(
+          text: "Yes",
+          isSelected: !viewModel.isLivedWithFamily,
+          onPressed: () {
+            viewModel.setIsLivedWithFamily(false);
+          },
+          context: context,
+        ),
+        30.width(),
+        _buildFamilyButton(
+          text: "No",
+          isSelected: viewModel.isLivedWithFamily,
+          onPressed: () {
+            viewModel.setIsLivedWithFamily(true);
+          },
+          context: context,
+        ),
+      ],
+    );
+  }
+
+  Widget _buildFamilyButton({
+    required String text,
+    required bool isSelected,
+    required VoidCallback onPressed,
+    required BuildContext context,
+  }) {
+    return CustomButton(
+      text: text,
+      onPressed: onPressed,
+      borderRadius: 15.0,
+      buttonColor: isSelected ? AppColors.primary : AppColors.white,
+      border: Border.all(
+        color: isSelected ? AppColors.primary : AppColors.lightGrey,
+      ),
+      textColor: isSelected ? AppColors.white : AppColors.darkGrey,
+      width: context.screenWidth * 0.3,
+      height: 35.0,
+    );
+  }
+
+  Widget _buildLogoutButton(BuildContext context) {
+    return CustomButton(
+      text: "Logout",
+      onPressed: () {
+        AppUtils.showMyDialog("Logout", "Are you sure want to logout", context);
+      },
+      borderRadius: 5.0,
+      buttonColor: AppColors.extraLightGrey,
+      textColor: AppColors.darkGrey,
+      width: context.screenWidth * 0.15,
+      height: 30.0,
     );
   }
 }
