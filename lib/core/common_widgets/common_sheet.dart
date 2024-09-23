@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nikah_forever_assignment/features/auth/presentation/widgets/multi_seelct.dart';
+import 'package:nikah_forever_assignment/features/auth/presentation/components/social_details/multi_selection.dart';
 import 'package:nikah_forever_assignment/features/auth/view_model/auth_viewmodel.dart';
 import 'package:provider/provider.dart';
 

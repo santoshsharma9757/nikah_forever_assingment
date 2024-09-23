@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:nikah_forever_assignment/core/constants/app_style.dart';
 import 'package:nikah_forever_assignment/core/constants/app_text_style.dart';
 import 'package:nikah_forever_assignment/core/extensions/app_extensions.dart';
-import 'package:nikah_forever_assignment/features/auth/presentation/widgets/pinput.dart';
-import 'package:nikah_forever_assignment/features/auth/presentation/widgets/resend_text.dart';
+import 'package:nikah_forever_assignment/features/auth/presentation/components/verification/pinput.dart';
+import 'package:nikah_forever_assignment/features/auth/presentation/components/verification/resend_text.dart';
 
 class VerificationStep extends StatelessWidget {
   const VerificationStep({super.key});
