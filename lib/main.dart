@@ -17,7 +17,9 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [ChangeNotifierProvider(create: (_) => AuthViewModel())],
       child: MaterialApp(
-        theme: ThemeData(primarySwatch: AppColors.customColor),
+        theme: ThemeData(
+            scaffoldBackgroundColor: AppColors.white,
+            primarySwatch: AppColors.customColor),
         initialRoute: AppRouteString.registrationProcess,
         onGenerateRoute: AppRoutes.onGeneratedRoute,
       ),
