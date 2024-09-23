@@ -64,7 +64,7 @@ class _CommonBottomSheetState extends State<CommonBottomSheet> {
   List<Widget> _buildContentList(AuthViewModel viewModel) {
     return [
       MultiStepSelection(
-        title: "Select Marital Status",
+        title: "Select Marital Status*",
         items: viewModel.maritalStatusList,
         onSelect: (value) {
           viewModel.updateSelectedMaritalStatus(value);
@@ -73,7 +73,7 @@ class _CommonBottomSheetState extends State<CommonBottomSheet> {
         selectedValue: viewModel.selectedMaritalStatus,
       ),
       MultiStepSelection(
-        title: "Select Mother Tongue",
+        title: "Select Mother Tongue*",
         items: viewModel.motherTongueList,
         onSelect: (value) {
           viewModel.updateSelectedMotherTongue(value);
@@ -82,7 +82,7 @@ class _CommonBottomSheetState extends State<CommonBottomSheet> {
         selectedValue: viewModel.selectedMotherTongue,
       ),
       MultiStepSelection(
-        title: "Select Sect",
+        title: "Select Sect*",
         items: viewModel.sectData.keys.toList(),
         onSelect: (value) {
           viewModel.updateSelectedSect(value);
@@ -92,7 +92,7 @@ class _CommonBottomSheetState extends State<CommonBottomSheet> {
       ),
       if (viewModel.selectedSect != null)
         MultiStepSelection(
-          title: "Select Caste",
+          title: "Select Caste*",
           items: viewModel.getCasteListForSect(viewModel.selectedSect!),
           onSelect: (value) {
             viewModel.updateSelectedCaste(value);
@@ -101,7 +101,7 @@ class _CommonBottomSheetState extends State<CommonBottomSheet> {
           selectedValue: viewModel.selectedCaste,
         ),
       MultiStepSelection(
-        title: "Select Highest Education",
+        title: "Select Highest Education*",
         items: viewModel.educationData.keys.toList(),
         onSelect: (value) {
           viewModel.updateSelectedEducationLevel(value);
@@ -111,7 +111,7 @@ class _CommonBottomSheetState extends State<CommonBottomSheet> {
       ),
       if (viewModel.selectedEducationLevel != null)
         MultiStepSelection(
-          title: "Select Specific Education",
+          title: "Select Specific Education*",
           items: viewModel.getEducationListForLevel(viewModel.selectedEducationLevel!),
           onSelect: (value) {
             viewModel.updateSelectedEducation(value);
@@ -120,7 +120,7 @@ class _CommonBottomSheetState extends State<CommonBottomSheet> {
           selectedValue: viewModel.selectedEducation,
         ),
       MultiStepSelection(
-        title: "Select Employment Type",
+        title: "Select Employment Type*",
         items: viewModel.employmentData.keys.toList(),
         onSelect: (value) {
           viewModel.updateSelectedEmploymentType(value);
@@ -130,7 +130,7 @@ class _CommonBottomSheetState extends State<CommonBottomSheet> {
       ),
       if (viewModel.selectedEmploymentType != null)
         MultiStepSelection(
-          title: "Select Employment Detail",
+          title: "Select Employment Detail*",
           items: viewModel.getEmploymentDetailsForType(viewModel.selectedEmploymentType!),
           onSelect: (value) {
             viewModel.updateSelectedEmploymentDetail(value);
@@ -139,7 +139,7 @@ class _CommonBottomSheetState extends State<CommonBottomSheet> {
           selectedValue: viewModel.selectedEmploymentDetail,
         ),
       MultiStepSelection(
-        title: "Select Occupation Type",
+        title: "Select Occupation Type*",
         items: viewModel.occupationData.keys.toList(),
         onSelect: (value) {
           viewModel.updateSelectedOccupationType(value);
@@ -149,7 +149,7 @@ class _CommonBottomSheetState extends State<CommonBottomSheet> {
       ),
       if (viewModel.selectedOccupationType != null)
         MultiStepSelection(
-          title: "Select Occupation Detail",
+          title: "Select Occupation Detail*",
           items: viewModel.getOccupationDetailsForType(viewModel.selectedOccupationType!),
           onSelect: (value) {
             viewModel.updateSelectedOccupationDetail(value);
@@ -158,10 +158,11 @@ class _CommonBottomSheetState extends State<CommonBottomSheet> {
           selectedValue: viewModel.selectedOccupationDetail,
         ),
       MultiStepSelection(
-        title: "Select Annual Income Range",
+        title: "Select Annual Income Range*",
         items: viewModel.annualIncomeRangeList,
         onSelect: (value) {
           viewModel.updateSelectedAnnualIncomeRange(value);
+          Navigator.pop(context);
         },
         pageController: _pageController,
         selectedValue: viewModel.selectedAnnualIncomeRange,

@@ -65,10 +65,10 @@ class _CustomInputFieldState extends State<CustomInputField> {
               labelText: widget.label,
               hintText: widget.hintText,
               labelStyle: TextStyle(
-                  fontSize: !widget.isValid ? 11 : 13,
+                  fontSize: !widget.isValid ? 13 : 14,
                   color: AppColors.lightGrey),
               hintStyle: TextStyle(
-                  fontSize: !widget.isValid ? 11 : 13,
+                  fontSize: !widget.isValid ? 13 : 14,
                   color: AppColors.lightGrey),
               prefixIcon: widget.prefixIcon,
               suffixIcon: widget.suffixIcon,

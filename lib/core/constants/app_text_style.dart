@@ -56,7 +56,7 @@ class AppTextStyles {
   );
 
   static const TextStyle hintText = TextStyle(
-      fontSize: 10.0,
+      fontSize: 12.0,
       fontWeight: AppFontWeight.medium,
       color: AppColors.lightGrey,
       backgroundColor: AppColors.white);
