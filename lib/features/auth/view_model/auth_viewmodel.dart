@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class AuthViewModel extends ChangeNotifier {
+
+  int currentPageIndex = 0;
   String? _selectedDateOfBirth;
   get selectedDateOfBirth => _selectedDateOfBirth;
   setSelectedDateOfBirth(value) {

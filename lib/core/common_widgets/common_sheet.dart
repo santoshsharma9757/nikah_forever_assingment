@@ -12,7 +12,14 @@ class CommonBottomSheet extends StatefulWidget {
 }
 
 class _CommonBottomSheetState extends State<CommonBottomSheet> {
-  final PageController _pageController = PageController();
+  late final PageController _pageController;
+
+  @override
+  void initState() {
+    super.initState();
+    final viewModel = Provider.of<AuthViewModel>(context, listen: false);
+    _pageController = PageController(initialPage: viewModel.currentPageIndex);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,19 +32,25 @@ class _CommonBottomSheetState extends State<CommonBottomSheet> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Align(
-                  alignment: Alignment.topCenter,
-                  child: Container(
-                      width: 100,
-                      height: 7,
-                      decoration: BoxDecoration(
-                          color: Colors.grey,
-                          borderRadius: BorderRadius.circular(5)))),
+                alignment: Alignment.topCenter,
+                child: Container(
+                  width: 100,
+                  height: 7,
+                  decoration: BoxDecoration(
+                    color: Colors.grey,
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                ),
+              ),
               const SizedBox(height: 10),
               SizedBox(
                 height: 300,
                 child: PageView(
                   controller: _pageController,
                   physics: const NeverScrollableScrollPhysics(),
+                  onPageChanged: (index) {
+                    viewModel.currentPageIndex = index;
+                  },
                   children: _buildContentList(viewModel),
                 ),
               ),
@@ -50,7 +63,6 @@ class _CommonBottomSheetState extends State<CommonBottomSheet> {
 
   List<Widget> _buildContentList(AuthViewModel viewModel) {
     return [
-      // Marital Status Selection
       MultiStepSelection(
         title: "Select Marital Status",
         items: viewModel.maritalStatusList,
@@ -60,8 +72,6 @@ class _CommonBottomSheetState extends State<CommonBottomSheet> {
         pageController: _pageController,
         selectedValue: viewModel.selectedMaritalStatus,
       ),
-
-      // Mother Tongue Selection
       MultiStepSelection(
         title: "Select Mother Tongue",
         items: viewModel.motherTongueList,
@@ -71,8 +81,6 @@ class _CommonBottomSheetState extends State<CommonBottomSheet> {
         pageController: _pageController,
         selectedValue: viewModel.selectedMotherTongue,
       ),
-
-      // Sect Selection
       MultiStepSelection(
         title: "Select Sect",
         items: viewModel.sectData.keys.toList(),
@@ -82,8 +90,6 @@ class _CommonBottomSheetState extends State<CommonBottomSheet> {
         pageController: _pageController,
         selectedValue: viewModel.selectedSect,
       ),
-
-      // Caste Selection (Only show if a Sect is selected)
       if (viewModel.selectedSect != null)
         MultiStepSelection(
           title: "Select Caste",
@@ -94,93 +100,63 @@ class _CommonBottomSheetState extends State<CommonBottomSheet> {
           pageController: _pageController,
           selectedValue: viewModel.selectedCaste,
         ),
-
-      // Highest Education Selection
       MultiStepSelection(
         title: "Select Highest Education",
-        items: Provider.of<AuthViewModel>(context).educationData.keys.toList(),
+        items: viewModel.educationData.keys.toList(),
         onSelect: (value) {
-          Provider.of<AuthViewModel>(context, listen: false)
-              .updateSelectedEducationLevel(value);
+          viewModel.updateSelectedEducationLevel(value);
         },
         pageController: _pageController,
-        selectedValue:
-            Provider.of<AuthViewModel>(context).selectedEducationLevel,
+        selectedValue: viewModel.selectedEducationLevel,
       ),
-
-      // Specific Education Selection (Only show if an Education Level is selected)
-      if (Provider.of<AuthViewModel>(context).selectedEducationLevel != null)
+      if (viewModel.selectedEducationLevel != null)
         MultiStepSelection(
           title: "Select Specific Education",
-          items: Provider.of<AuthViewModel>(context).getEducationListForLevel(
-              Provider.of<AuthViewModel>(context).selectedEducationLevel!),
+          items: viewModel.getEducationListForLevel(viewModel.selectedEducationLevel!),
           onSelect: (value) {
-            Provider.of<AuthViewModel>(context, listen: false)
-                .updateSelectedEducation(value);
+            viewModel.updateSelectedEducation(value);
           },
           pageController: _pageController,
-          selectedValue: Provider.of<AuthViewModel>(context).selectedEducation,
+          selectedValue: viewModel.selectedEducation,
         ),
-
-      // Employment Type Selection
       MultiStepSelection(
         title: "Select Employment Type",
-        items: Provider.of<AuthViewModel>(context).employmentData.keys.toList(),
+        items: viewModel.employmentData.keys.toList(),
         onSelect: (value) {
-          Provider.of<AuthViewModel>(context, listen: false)
-              .updateSelectedEmploymentType(value);
+          viewModel.updateSelectedEmploymentType(value);
         },
         pageController: _pageController,
-        selectedValue:
-            Provider.of<AuthViewModel>(context).selectedEmploymentType,
+        selectedValue: viewModel.selectedEmploymentType,
       ),
-
-      // Specific Employment Detail Selection (Only show if an Employment Type is selected)
-      if (Provider.of<AuthViewModel>(context).selectedEmploymentType != null)
+      if (viewModel.selectedEmploymentType != null)
         MultiStepSelection(
           title: "Select Employment Detail",
-          items: Provider.of<AuthViewModel>(context)
-              .getEmploymentDetailsForType(
-                  Provider.of<AuthViewModel>(context).selectedEmploymentType!),
+          items: viewModel.getEmploymentDetailsForType(viewModel.selectedEmploymentType!),
           onSelect: (value) {
-            Provider.of<AuthViewModel>(context, listen: false)
-                .updateSelectedEmploymentDetail(value);
+            viewModel.updateSelectedEmploymentDetail(value);
           },
           pageController: _pageController,
-          selectedValue:
-              Provider.of<AuthViewModel>(context).selectedEmploymentDetail,
+          selectedValue: viewModel.selectedEmploymentDetail,
         ),
-
-      // Occupation Type Selection
       MultiStepSelection(
         title: "Select Occupation Type",
-        items: Provider.of<AuthViewModel>(context).occupationData.keys.toList(),
+        items: viewModel.occupationData.keys.toList(),
         onSelect: (value) {
-          Provider.of<AuthViewModel>(context, listen: false)
-              .updateSelectedOccupationType(value);
+          viewModel.updateSelectedOccupationType(value);
         },
         pageController: _pageController,
-        selectedValue:
-            Provider.of<AuthViewModel>(context).selectedOccupationType,
+        selectedValue: viewModel.selectedOccupationType,
       ),
-
-      // Specific Occupation Detail Selection (Only show if an Occupation Type is selected)
-      if (Provider.of<AuthViewModel>(context).selectedOccupationType != null)
+      if (viewModel.selectedOccupationType != null)
         MultiStepSelection(
           title: "Select Occupation Detail",
-          items: Provider.of<AuthViewModel>(context)
-              .getOccupationDetailsForType(
-                  Provider.of<AuthViewModel>(context).selectedOccupationType!),
+          items: viewModel.getOccupationDetailsForType(viewModel.selectedOccupationType!),
           onSelect: (value) {
-            Provider.of<AuthViewModel>(context, listen: false)
-                .updateSelectedOccupationDetail(value);
+            viewModel.updateSelectedOccupationDetail(value);
           },
           pageController: _pageController,
-          selectedValue:
-              Provider.of<AuthViewModel>(context).selectedOccupationDetail,
+          selectedValue: viewModel.selectedOccupationDetail,
         ),
-
-      // Annual Income Range Selection
       MultiStepSelection(
         title: "Select Annual Income Range",
         items: viewModel.annualIncomeRangeList,
