@@ -1,4 +1,4 @@
-# nikah_forever_assignment
+# Nikah forever assignment
 ### Packages Used:
 Provider: Used for state management, enabling efficient handling of business logic and UI updates.
 Pinput: Utilized for implementing a customizable and user-friendly PIN input field.
