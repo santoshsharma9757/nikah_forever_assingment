@@ -1,16 +1,26 @@
-# nikah_forever_assignment
+# Nikah forever assignment work
+### Flutter SDK & Dart Versions
+- **Flutter SDK**: ` 3.24.3 `
+- **Dart**: ` 3.5.3`
+### Packages Used:
+**Provider** <br>
+Used for state management, enabling efficient handling of business logic and UI updates.
 
-A new Flutter project.
+**Pinput** <br>
+Utilized for implementing a customizable and user-friendly PIN input field.
 
-## Getting Started
+**Intl** <br>
+Employed for date formatting and internationalization..
+### UI and Functionality:
+The UI is structured using PageView for smooth horizontal navigation between different screens for bottomsheet content.
+State management is efficiently handled using Provider, ensuring seamless UI updates.
+Pinput is used for capturing and validating PIN entries, enhancing user experience.
+Intl is used to format dates in the desired format, improving readability and localization support.
 
-This project is a starting point for a Flutter application.
+## Android Apk
+- [Click here to download Apk](https://i.diawi.com/EvEKWA)
+## App Demo Video
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+https://github.com/user-attachments/assets/abadef99-c20a-4176-8d54-4622d2852984
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
