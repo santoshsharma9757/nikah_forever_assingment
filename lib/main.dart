@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nikah_forever_assignment/core/constants/app_string.dart';
 import 'package:nikah_forever_assignment/core/constants/app_style.dart';
 import 'package:nikah_forever_assignment/features/auth/view_model/auth_viewmodel.dart';
 import 'package:nikah_forever_assignment/routes/route.dart';
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       providers: [ChangeNotifierProvider(create: (_) => AuthViewModel())],
       child: MaterialApp(
         theme: ThemeData(primarySwatch: AppColors.customColor),
-        initialRoute: '/registration_process',
+        initialRoute: AppRouteString.registrationProcess,
         onGenerateRoute: AppRoutes.onGeneratedRoute,
       ),
     );

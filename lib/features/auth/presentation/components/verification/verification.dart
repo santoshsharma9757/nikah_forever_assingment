@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nikah_forever_assignment/core/constants/app_string.dart';
 import 'package:nikah_forever_assignment/core/constants/app_style.dart';
 import 'package:nikah_forever_assignment/core/constants/app_text_style.dart';
 import 'package:nikah_forever_assignment/core/extensions/app_extensions.dart';
@@ -29,14 +30,14 @@ class VerificationStep extends StatelessWidget {
     return const Column(
       children: [
         Text(
-          "Verify Mobile Number",
+          AppString.verifyMessage,
           style: AppTextStyles.heading,
         ),
         SizedBox(
           height: 10,
         ),
         Text(
-          "Enter the 4-digit code sent to",
+          AppString.enterOtpMessage,
           style: AppTextStyles.heading4,
         ),
         SizedBox(
@@ -46,7 +47,7 @@ class VerificationStep extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              "+917982620773",
+            AppString.mobileNumberMessage,
               style: AppTextStyles.heading1,
             ),
             SizedBox(width: 10),

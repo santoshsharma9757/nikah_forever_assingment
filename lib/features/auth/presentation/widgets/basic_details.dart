@@ -29,32 +29,32 @@ class BasicDetailsStep extends StatelessWidget {
               _buildContainerWithLabel(
                 context,
                 viewModel,
-                hintText: "Date of birth*",
+                hintText: AppString.dateOfBirth,
                 selectedValue: viewModel.selectedDateOfBirth,
                 isValid: viewModel.isDateOfBirthValid,
-                bottomSheetKey: 'date_of_birth',
+                bottomSheetKey: AppStringKey.dateofBirth,
               ),
               20.height(),
               _buildContainerWithLabel(
                 context,
                 viewModel,
-                hintText: "Height*",
+                hintText: AppString.height,
                 selectedValue: viewModel.selectedHeight,
                 isValid: viewModel.isHeightValid,
-                bottomSheetKey: 'height',
+                bottomSheetKey: AppStringKey.height,
               ),
               20.height(),
               _buildContainerWithLabel(
                 context,
                 viewModel,
-                hintText: "Address*",
+                hintText: AppString.address,
                 selectedValue: viewModel.fullAddress,
                 isValid: viewModel.isAddressValid,
-                bottomSheetKey: 'address',
+                bottomSheetKey: AppStringKey.address,
               ),
               20.height(),
               const Text(
-                "Do you live with your family?",
+                AppString.doYoulivewithFamily,
                 style: AppTextStyles.caption,
               ),
               10.height(),
@@ -65,10 +65,10 @@ class BasicDetailsStep extends StatelessWidget {
                 _buildContainerWithLabel(
                   context,
                   viewModel,
-                  hintText: "Where does your family live*",
+                  hintText: AppString.whereDoYoulive,
                   selectedValue: viewModel.fullAddress2,
                   isValid: true,
-                  bottomSheetKey: 'address2',
+                  bottomSheetKey: AppStringKey.address2,
                 ),
               10.height(),
               _buildLogoutButton(context),
@@ -83,7 +83,7 @@ class BasicDetailsStep extends StatelessWidget {
     return CustomInputField(
       key: UniqueKey(),
       controller: viewModel.nameController,
-      label: "Enter your name",
+      label: AppString.name,
       errorMessage: viewModel.isNameValid ? null : AppString.emptyErrorMessage,
       isValid: viewModel.isNameValid,
     );
@@ -114,7 +114,7 @@ class BasicDetailsStep extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         _buildFamilyButton(
-          text: "Yes",
+          text: AppString.yes,
           isSelected: viewModel.isLivedWithFamily == false,
           onPressed: () {
             viewModel.setIsLivedWithFamily(false);
@@ -123,7 +123,7 @@ class BasicDetailsStep extends StatelessWidget {
         ),
         30.width(),
         _buildFamilyButton(
-          text: "No",
+          text: AppString.no,
           isSelected:
               viewModel.isLivedWithFamily == true, // Only selected if true
           onPressed: () {
@@ -157,9 +157,10 @@ class BasicDetailsStep extends StatelessWidget {
 
   Widget _buildLogoutButton(BuildContext context) {
     return CustomButton(
-      text: "Logout",
+      text: AppString.logout,
       onPressed: () {
-        AppUtils.showMyDialog("Logout", "Are you sure want to logout", context);
+        AppUtils.showMyDialog(
+            AppString.logout, AppString.logoutMessage, context);
       },
       borderRadius: 5.0,
       buttonColor: AppColors.extraLightGrey,

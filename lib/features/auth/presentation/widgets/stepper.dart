@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:nikah_forever_assignment/core/common_widgets/common_button.dart';
 import 'package:nikah_forever_assignment/core/common_widgets/custom_stepper.dart';
+import 'package:nikah_forever_assignment/core/constants/app_string.dart';
 import 'package:nikah_forever_assignment/core/constants/app_style.dart';
 import 'package:nikah_forever_assignment/core/constants/app_text_style.dart';
 import 'package:nikah_forever_assignment/core/extensions/app_extensions.dart';
@@ -93,7 +94,7 @@ class _StepperWithLinesState extends State<StepperWithLines> {
                     log("ALL FIELD REQUIRED");
                   }
                 } else {
-                  Navigator.pushNamed(context, '/home_screen');
+                  Navigator.pushNamed(context, AppRouteString.homeScreen);
                 }
               },
               borderRadius: 15.0,
