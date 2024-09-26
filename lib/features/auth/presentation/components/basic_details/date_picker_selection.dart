@@ -4,6 +4,7 @@ import 'package:intl/intl.dart'; // Import for date formatting
 import 'package:nikah_forever_assignment/core/common_widgets/common_button.dart';
 import 'package:nikah_forever_assignment/core/constants/app_style.dart';
 import 'package:nikah_forever_assignment/core/constants/app_text_style.dart';
+import 'package:nikah_forever_assignment/core/utils/date_formatter.dart';
 import 'package:nikah_forever_assignment/features/auth/view_model/auth_viewmodel.dart';
 import 'package:provider/provider.dart';
 
@@ -11,7 +12,7 @@ class DatePickerSelection extends StatefulWidget {
   const DatePickerSelection({super.key});
 
   @override
-  State<DatePickerSelection> createState() => _DatePickerSelectionState(); 
+  State<DatePickerSelection> createState() => _DatePickerSelectionState();
 }
 
 class _DatePickerSelectionState extends State<DatePickerSelection> {
@@ -22,7 +23,7 @@ class _DatePickerSelectionState extends State<DatePickerSelection> {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       context.read<AuthViewModel>().setSelectedDateOfBirth(
-          DateFormat('dd-MM-yyyy').format(selectedDate));
+          DateFormatterUtil.formatToDDMMYYYY(selectedDate));
     });
   }
 

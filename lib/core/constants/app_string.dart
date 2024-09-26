@@ -6,6 +6,7 @@ class AppString {
   static const String height = "Height*";
   static const String address = "Address*";
   static const String logout = "Logout";
+  static const String cancel = "Cancel";
   static const String yes = "Yes";
   static const String no = "No";
   static const String doYoulivewithFamily = "Do you live with your family?";

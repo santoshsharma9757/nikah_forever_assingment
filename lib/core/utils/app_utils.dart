@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:nikah_forever_assignment/core/common_widgets/common_button.dart';
 import 'package:nikah_forever_assignment/core/common_widgets/common_sheet.dart';
@@ -28,11 +26,15 @@ class AppUtils {
   }
 
 //Dialog
-  static Future<void> showMyDialog(
-    String title,
-    String message,
-    BuildContext context,
-  ) async {
+  static Future<void> showMyDialog({
+    required String title,
+    required String message,
+    required BuildContext context,
+    required String primaryButtonText,
+    required VoidCallback onPrimaryButtonPressed,
+    String? secondaryButtonText,
+    VoidCallback? onSecondaryButtonPressed,
+  }) async {
     return showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -42,36 +44,36 @@ class AppUtils {
           children: [
             AlertDialog(
               title: Align(
-                  alignment: Alignment.center,
-                  child: Text(
-                    title,
-                    style: AppTextStyles.heading5,
-                  )),
-              content: Align(alignment: Alignment.center, child: Text(message)),
+                alignment: Alignment.center,
+                child: Text(
+                  title,
+                  style: AppTextStyles.heading5,
+                ),
+              ),
+              content: Align(
+                alignment: Alignment.center,
+                child: Text(message),
+              ),
               actions: <Widget>[
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     CustomButton(
-                      text: "Cancel",
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                      borderRadius: 5.0,
-                      buttonColor: Colors.transparent,
+                      text: primaryButtonText,
+                      onPressed: onPrimaryButtonPressed,
+                      borderRadius: 20.0,
                       textColor: AppColors.primary,
+                      buttonColor: Colors.transparent,
                       height: 30.0,
                       width: context.screenWidth * 0.25,
-                      fontSize: 15,
+                      fontSize: 30,
                     ),
                     CustomButton(
-                      text: "Logout",
-                      onPressed: () {
-                        exit(0);
-                      },
+                      text: secondaryButtonText!,
+                      onPressed: onSecondaryButtonPressed,
                       borderRadius: 20.0,
-                      textColor: AppColors.white,
                       buttonColor: AppColors.primary,
+                      textColor: AppColors.white,
                       height: 30.0,
                       width: context.screenWidth * 0.25,
                       fontSize: 15,

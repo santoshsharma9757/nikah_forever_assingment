@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:nikah_forever_assignment/core/common_widgets/common_button.dart';
 import 'package:nikah_forever_assignment/core/common_widgets/container_with_label.dart';
 import 'package:nikah_forever_assignment/core/common_widgets/custom_text_field.dart';
@@ -160,7 +161,18 @@ class BasicDetailsStep extends StatelessWidget {
       text: AppString.logout,
       onPressed: () {
         AppUtils.showMyDialog(
-            AppString.logout, AppString.logoutMessage, context);
+          title: AppString.logout,
+          message: AppString.logoutMessage,
+          context: context,
+          primaryButtonText: AppString.cancel,
+          onPrimaryButtonPressed: () {
+            Navigator.of(context).pop();
+          },
+          secondaryButtonText: AppString.logout,
+          onSecondaryButtonPressed: () {
+            SystemNavigator.pop();
+          },
+        );
       },
       borderRadius: 5.0,
       buttonColor: AppColors.extraLightGrey,
