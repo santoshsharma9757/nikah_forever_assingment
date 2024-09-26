@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nikah_forever_assignment/core/constants/dummy_data.dart';
+import 'package:nikah_forever_assignment/core/utils/date_formatter.dart';
 
 class AuthViewModel extends ChangeNotifier {
   //Pageview Index
@@ -12,6 +13,14 @@ class AuthViewModel extends ChangeNotifier {
     _selectedDateOfBirth = value;
     validateBasicDetails();
     notifyListeners();
+  }
+
+  getIntialDate() {
+    DateTime now = DateTime.now();
+    _selectedDateOfBirth = DateFormatterUtil.formatToDDMMYYYY(now);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      notifyListeners();
+    });
   }
 
   // Height

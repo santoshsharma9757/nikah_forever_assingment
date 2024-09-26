@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart'; // Import for date formatting
 import 'package:nikah_forever_assignment/core/common_widgets/common_button.dart';
 import 'package:nikah_forever_assignment/core/constants/app_style.dart';
 import 'package:nikah_forever_assignment/core/constants/app_text_style.dart';
@@ -16,15 +15,12 @@ class DatePickerSelection extends StatefulWidget {
 }
 
 class _DatePickerSelectionState extends State<DatePickerSelection> {
-  DateTime selectedDate = DateTime.now();
-
+  late AuthViewModel authViewModel;
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<AuthViewModel>().setSelectedDateOfBirth(
-          DateFormatterUtil.formatToDDMMYYYY(selectedDate));
-    });
+    authViewModel = Provider.of<AuthViewModel>(context, listen: false);
+    authViewModel.getIntialDate();
   }
 
   @override
@@ -55,12 +51,13 @@ class _DatePickerSelectionState extends State<DatePickerSelection> {
               padding: const EdgeInsets.all(12.0),
               child: CupertinoDatePicker(
                 mode: CupertinoDatePickerMode.date,
-                initialDateTime: selectedDate,
+                initialDateTime: DateTime.now(),
                 onDateTimeChanged: (DateTime newDate) {
                   setState(() {
-                    selectedDate = newDate;
-                    context.read<AuthViewModel>().setSelectedDateOfBirth(
-                        DateFormat('dd-MM-yyyy').format(selectedDate));
+                    DateTime selectedDate = newDate;
+                    String formatedDate =
+                        DateFormatterUtil.formatToDDMMYYYY(selectedDate);
+                    authViewModel.setSelectedDateOfBirth(formatedDate);
                   });
                 },
               ),

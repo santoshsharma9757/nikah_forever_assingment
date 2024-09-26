@@ -17,7 +17,4 @@ extension IntExtension on int {
 extension MediaQueryExtension on BuildContext {
   double get screenWidth => MediaQuery.of(this).size.width;
   double get screenHeight => MediaQuery.of(this).size.height;
-
-  double get safeWidth => screenWidth - MediaQuery.of(this).padding.horizontal;
-  double get safeHeight => screenHeight - MediaQuery.of(this).padding.vertical;
 }
