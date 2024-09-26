@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nikah_forever_assignment/core/extensions/app_extensions.dart';
 import 'package:nikah_forever_assignment/features/auth/presentation/components/social_details/multi_selection.dart';
 import 'package:nikah_forever_assignment/features/auth/view_model/auth_viewmodel.dart';
 import 'package:provider/provider.dart';
@@ -34,7 +35,7 @@ class _CommonBottomSheetState extends State<CommonBottomSheet> {
               Align(
                 alignment: Alignment.topCenter,
                 child: Container(
-                  width: 100,
+                  width: context.screenWidth*0.1,
                   height: 7,
                   decoration: BoxDecoration(
                     color: Colors.grey,
@@ -44,7 +45,7 @@ class _CommonBottomSheetState extends State<CommonBottomSheet> {
               ),
               const SizedBox(height: 10),
               SizedBox(
-                height: 300,
+                height:  context.screenHeight*0.3,
                 child: PageView(
                   controller: _pageController,
                   physics: const NeverScrollableScrollPhysics(),
